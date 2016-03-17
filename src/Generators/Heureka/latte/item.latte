@@ -1,0 +1,51 @@
+{contentType xml}
+<SHOPITEM>
+    <ITEM_ID n:ifset="$item->itemId">{$item->itemId}</ITEM_ID>
+    <PRODUCTNAME>{$item->productName}</PRODUCTNAME>
+    <PRODUCT>{$item->product}</PRODUCT>
+    <DESCRIPTION>{$item->description}</DESCRIPTION>
+    <URL>{$item->url}</URL>
+
+    {if !empty($images = $item->images)}
+        {foreach $images as $image}
+            {var tag = $iterator->first ? 'IMGURL' : 'IMGURL_ALTERNATIVE'}
+            <{$tag}>{$image->url}</{$tag}>
+        {/foreach}
+    {/if}
+
+    <VIDEO_URL n:if="$item->videoUrl">{$item->videoUrl}</VIDEO_URL>
+    <PRICE_VAT>{$item->priceVat}</PRICE_VAT>
+
+    {if !empty($parameters = $item->parameters)}
+        <PARAM n:foreach="$parameters as $parameter">
+            <PARAM_NAME>{$parameter->name}</PARAM_NAME>
+            <VAL>{$parameter->value}</VAL>
+        </PARAM>
+    {/if}
+
+    <MANUFACTURER n:ifset="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
+    <CATEGORYTEXT n:ifset="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
+    <EAN n:ifset="$item->ean">{$item->ean}</EAN>
+    <ISBN n:ifset="$item->isbn">{$item->isbn}</ISBN>
+    <HEUREKA_CPC n:if="isset($item->heurekaCpc) && $item->heurekaCpc>0">{$item->heurekaCpc}</HEUREKA_CPC>
+    <DELIVERY_DATE>{$item->deliveryDate}</DELIVERY_DATE>
+
+    {if !empty($deliveries = $item->deliveries)}
+        <DELIVERY n:foreach="$deliveries as $delivery">
+            <DELIVERY_ID>{$delivery->id}</DELIVERY_ID>
+            <DELIVERY_PRICE>{$delivery->price}</DELIVERY_PRICE>
+            <DELIVERY_PRICE_COD n:if="isset($delivery->priceCod)">{$delivery->priceCod}</DELIVERY_PRICE_COD>
+        </DELIVERY>
+    {/if}
+
+    <ITEMGROUP_ID n:ifset="$item->itemGroupId">{$item->itemGroupId}</ITEMGROUP_ID>
+
+    {if !empty($accessories = $item->accessories)}
+        <ACCESSORY n:foreach="$accessories as $itemId">{$itemId}</ACCESSORY>
+    {/if}
+
+    <DUES n:ifset="$item->dues">{$item->dues}</DUES>
+    {if !empty($gifts = $item->gifts)}
+        <GIFT n:foreach="$gifts as $gift">{$gift->name}</GIFT>
+    {/if}
+</SHOPITEM>

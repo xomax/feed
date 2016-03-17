@@ -1,0 +1,35 @@
+{
+	"name": "mk/feed",
+	"description": "Nette extension for export xml feeds",
+	"keywords": [
+		"nette",
+		"heureka",
+		"zbozi"
+	],
+	"license": [
+		"MIT"
+	],
+	"authors": [
+		{
+			"name": "Martin Knor"
+		}
+	],
+	"require": {
+		"php": ">=5.4",
+		"nette/di": "~2.3",
+		"nette/utils": "~2.3",
+		"latte/latte": "~2.3",
+		"kdyby/console": "~2.3"
+	},
+	"require-dev": {
+		"nette/tester": "@dev"
+	},
+	"autoload": {
+		"psr-4": {
+			"Mk\\Feed\\": "src/"
+		},
+		"classmap": [
+			"src/exceptions.php"
+		]
+	}
+}

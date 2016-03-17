@@ -1,0 +1,50 @@
+{contentType xml}
+<SHOPITEM>
+    <PRODUCTNAME>{$item->productName}</PRODUCTNAME>
+    <DESCRIPTION>{$item->description}</DESCRIPTION>
+    <URL>{$item->url}</URL>
+    <PRICE_VAT>{$item->priceVat}</PRICE_VAT>
+    <DELIVERY_DATE>{$item->deliveryDate}</DELIVERY_DATE>
+    <ITEM_ID n:ifset="$item->itemId">{$item->itemId}</ITEM_ID>
+
+    {if !empty($images = $item->images)}
+        <IMGURL n:foreach="$images as $image">{$image->url}</IMGURL>
+    {/if}
+
+    <EAN n:ifset="$item->ean">{$item->ean}</EAN>
+    <ISBN n:ifset="$item->isbn">{$item->isbn}</ISBN>
+    <PRODUCTNO n:ifset="$item->productNo">{$item->productNo}</PRODUCTNO>
+    <ITEMGROUP_ID n:ifset="$item->itemGroupId">{$item->itemGroupId}</ITEMGROUP_ID>
+    <MANUFACTURER n:ifset="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
+    <BRAND n:ifset="$item->brand">{$item->brand}</BRAND>
+    <CATEGORY_ID n:ifset="$item->categoryId">{$item->categoryId}</CATEGORY_ID>
+    <CATEGORYTEXT n:ifset="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
+    <PRODUCT n:ifset="$item->product">{$item->product}</PRODUCT>
+    <ITEM_TYPE n:ifset="$item->type">{$item->type}</ITEM_TYPE>
+
+    {if !empty($extraMessages = $item->extraMessages)}
+        <EXTRA_MESSAGE n:foreach="$extraMessages as $extraMessage">{$extraMessage->type}</EXTRA_MESSAGE>
+    {/if}
+
+    {if !empty($shopDepots = $item->shopDepots)}
+        <SHOP_DEPOTS n:foreach="$shopDepots as $shopDepot">{$shopDepot->id}</SHOP_DEPOTS>
+    {/if}
+
+    <VISIBILITY n:ifset="$item->visibility">{$item->visibility}</VISIBILITY>
+    <CUSTOM_LABEL_0 n:ifset="$item->customLabel">{$item->customLabel}</CUSTOM_LABEL_0>
+    <CUSTOM_LABEL_1 n:ifset="$item->customLabel1">{$item->customLabel1}</CUSTOM_LABEL_1>
+    <MAX_CPC n:if="isset($item->maxCpc) && $item->maxCpc>0">{$item->maxCpc}</MAX_CPC>
+    <MAX_CPC_SEARCH n:if="isset($item->maxCpcSearch) && $item->maxCpcSearch>0">{$item->maxCpcSearch}</MAX_CPC_SEARCH>
+
+    {if !empty($parameters = $item->parameters)}
+        <PARAM n:foreach="$parameters as $parameter">
+            <PARAM_NAME>{$parameter->name}</PARAM_NAME>
+            <VAL>{$parameter->value}</VAL>
+            <UNIT n:if="!empty($parameter->unit)">{$parameter->unit}</UNIT>
+        </PARAM>
+    {/if}
+
+    <PRODUCT_LINE n:if="$item->productLine">{$item->productLine}</PRODUCT_LINE>
+    <LIST_PRICE n:if="$item->listPrice">{$item->listPrice}</LIST_PRICE>
+    <RELEASE_DATE n:if="$item->releaseDate">{$item->releaseDate|date:'c'}</RELEASE_DATE>
+</SHOPITEM>
