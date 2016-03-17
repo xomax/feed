@@ -13,7 +13,7 @@ Installation
 The best way to install Mk/Feed is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require mk/feed
+$ composer require makr/feed
 ```
 
 Configuration
