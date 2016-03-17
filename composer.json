@@ -1,5 +1,5 @@
 {
-	"name": "mk/feed",
+	"name": "makr/feed",
 	"description": "Nette extension for export xml feeds",
 	"keywords": [
 		"nette",

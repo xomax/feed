@@ -141,3 +141,5 @@ Execute config
 ```sh
 $ php index.php Feed:export
 ```
+
+Inspired by [Trejjam/Export](https://github.com/Trejjam/Export)
