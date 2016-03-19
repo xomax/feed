@@ -47,8 +47,8 @@ class Item extends BaseItem {
     protected $brand;
     /** @var int|null */
     protected $categoryId;
-    /** @var string|null */
-    protected $categoryText;
+    /** @var CategoryText[] */
+    protected $categoryTexts = [];
     /** @var string|null */
     protected $product;
     /** @var string|null */
@@ -85,6 +85,17 @@ class Item extends BaseItem {
     public function addImage($url)
     {
         $this->images[] = new Image($url);
+
+        return $this;
+    }
+
+    /**
+     * @param $text
+     * @return $this
+     */
+    public function addCategoryText($text)
+    {
+        $this->categoryTexts[] = new CategoryText($text);
 
         return $this;
     }
@@ -377,21 +388,11 @@ class Item extends BaseItem {
     /**
      * @return null|string
      */
-    public function getCategoryText()
+    public function getCategoryTexts()
     {
-        return $this->categoryText;
+        return $this->categoryTexts;
     }
-
-    /**
-     * @param null|string $categoryText
-     * @return Item
-     */
-    public function setCategoryText($categoryText)
-    {
-        $this->categoryText = $categoryText;
-
-        return $this;
-    }
+    
 
     /**
      * @return null|string

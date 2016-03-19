@@ -18,9 +18,13 @@
     <MANUFACTURER n:if="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
     <BRAND n:if="$item->brand">{$item->brand}</BRAND>
     <CATEGORY_ID n:if="$item->categoryId">{$item->categoryId}</CATEGORY_ID>
-    <CATEGORYTEXT n:if="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
+
+    {if !empty($categoryTexts = $item->categoryTexts)}
+        <CATEGORYTEXT n:foreach="$categoryTexts as $categoryText" n:if="!empty($categoryText->text)">{$categoryText->text}</CATEGORYTEXT>
+    {/if}
+
     <PRODUCT n:if="$item->product">{$item->product}</PRODUCT>
-    <ITEM_TYPE n:if="$item->type">{$item->type}</ITEM_TYPE>
+    {*<ITEM_TYPE n:if="$item->type">{$item->type}</ITEM_TYPE>*}
 
     {if !empty($extraMessages = $item->extraMessages)}
         <EXTRA_MESSAGE n:foreach="$extraMessages as $extraMessage">{$extraMessage->type}</EXTRA_MESSAGE>
