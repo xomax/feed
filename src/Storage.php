@@ -29,7 +29,10 @@ class Storage implements IStorage {
      */
     public function save($filename, $content)
     {
-        file_put_contents($this->dir . DIRECTORY_SEPARATOR . $filename, $this->formatXml($content));
+        if(!is_dir($this->dir)) {
+            mkdir($this->dir);
+        }
+        file_put_contents(realpath($this->dir) . DIRECTORY_SEPARATOR . $filename, $this->formatXml($content));
     }
 
     /**
