@@ -88,8 +88,9 @@ abstract class BaseGenerator extends Object implements IGenerator {
 
         $this->prepareTemplate('footer');
 
-        fseek($this->handle, 0);
-        $this->storage->save($filename, fread($this->handle, 8 * 1024));
+        $size = ftell($this->handle);
+        rewind($this->handle);
+        $this->storage->save($filename, fread($this->handle, $size));
 
         fclose($this->handle);
 
