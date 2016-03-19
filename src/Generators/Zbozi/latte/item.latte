@@ -5,22 +5,22 @@
     <URL>{$item->url}</URL>
     <PRICE_VAT>{$item->priceVat}</PRICE_VAT>
     <DELIVERY_DATE>{$item->deliveryDate}</DELIVERY_DATE>
-    <ITEM_ID n:ifset="$item->itemId">{$item->itemId}</ITEM_ID>
+    <ITEM_ID n:if="$item->itemId">{$item->itemId}</ITEM_ID>
 
     {if !empty($images = $item->images)}
         <IMGURL n:foreach="$images as $image">{$image->url}</IMGURL>
     {/if}
 
-    <EAN n:ifset="$item->ean">{$item->ean}</EAN>
-    <ISBN n:ifset="$item->isbn">{$item->isbn}</ISBN>
-    <PRODUCTNO n:ifset="$item->productNo">{$item->productNo}</PRODUCTNO>
-    <ITEMGROUP_ID n:ifset="$item->itemGroupId">{$item->itemGroupId}</ITEMGROUP_ID>
-    <MANUFACTURER n:ifset="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
-    <BRAND n:ifset="$item->brand">{$item->brand}</BRAND>
-    <CATEGORY_ID n:ifset="$item->categoryId">{$item->categoryId}</CATEGORY_ID>
-    <CATEGORYTEXT n:ifset="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
-    <PRODUCT n:ifset="$item->product">{$item->product}</PRODUCT>
-    <ITEM_TYPE n:ifset="$item->type">{$item->type}</ITEM_TYPE>
+    <EAN n:if="$item->ean">{$item->ean}</EAN>
+    <ISBN n:if="$item->isbn">{$item->isbn}</ISBN>
+    <PRODUCTNO n:if="$item->productNo">{$item->productNo}</PRODUCTNO>
+    <ITEMGROUP_ID n:if="$item->itemGroupId">{$item->itemGroupId}</ITEMGROUP_ID>
+    <MANUFACTURER n:if="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
+    <BRAND n:if="$item->brand">{$item->brand}</BRAND>
+    <CATEGORY_ID n:if="$item->categoryId">{$item->categoryId}</CATEGORY_ID>
+    <CATEGORYTEXT n:if="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
+    <PRODUCT n:if="$item->product">{$item->product}</PRODUCT>
+    <ITEM_TYPE n:if="$item->type">{$item->type}</ITEM_TYPE>
 
     {if !empty($extraMessages = $item->extraMessages)}
         <EXTRA_MESSAGE n:foreach="$extraMessages as $extraMessage">{$extraMessage->type}</EXTRA_MESSAGE>
@@ -30,9 +30,9 @@
         <SHOP_DEPOTS n:foreach="$shopDepots as $shopDepot">{$shopDepot->id}</SHOP_DEPOTS>
     {/if}
 
-    <VISIBILITY n:ifset="$item->visibility">{$item->visibility}</VISIBILITY>
-    <CUSTOM_LABEL_0 n:ifset="$item->customLabel">{$item->customLabel}</CUSTOM_LABEL_0>
-    <CUSTOM_LABEL_1 n:ifset="$item->customLabel1">{$item->customLabel1}</CUSTOM_LABEL_1>
+    <VISIBILITY n:if="!$item->visibility">{$item->visibility ? 1 : 0}</VISIBILITY>
+    <CUSTOM_LABEL_0 n:if="$item->customLabel">{$item->customLabel}</CUSTOM_LABEL_0>
+    <CUSTOM_LABEL_1 n:if="$item->customLabel1">{$item->customLabel1}</CUSTOM_LABEL_1>
     <MAX_CPC n:if="isset($item->maxCpc) && $item->maxCpc>0">{$item->maxCpc}</MAX_CPC>
     <MAX_CPC_SEARCH n:if="isset($item->maxCpcSearch) && $item->maxCpcSearch>0">{$item->maxCpcSearch}</MAX_CPC_SEARCH>
 
