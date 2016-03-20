@@ -95,7 +95,6 @@ class ZboziGenerator extends Generator {
             ->setManufacturer('Adidas') #výrobce produktu, nepovinné
             ->setBrand('Nike') #značka produktu, nepovinné
             ->setCategoryId(1) #ID kategorie Zboží.cz, nepovinné
-            ->setCategoryText('Obleceni | neco') #kategorie dle eshopu, nepovinné
             ->setProduct('Cerny') #název nabídky ve výsledcích vyhledávání, např. "+ dárek zdarma", nepovinné
             ->setVisibility(true) #zobrazování nabídky na Zboží.cz
             ->setCustomLabel('neco') #dodatečné označení nabídky, vytvoří skupinu - kolekce, sezoni akce
@@ -106,6 +105,9 @@ class ZboziGenerator extends Generator {
             ->setListPrice(999) #doporučená koncová prodejní cena
             ->setReleaseDate(new \DateTime()); #datum oficiálního zahájení prodeje v ČR
 
+        #category text
+         $item->addCategoryText('Kategorie | Subkategorie');
+         $item->addCategoryText('Kategorie | Subkategorie1');
 
         #images
          $item->addImage('http://placehold.it/350x150'); #adresa obrázku, nepovinné, doporučujeme uvádět; značku je možné opakovat
@@ -128,6 +130,17 @@ class ZboziGenerator extends Generator {
     }
 
 }
+```
+
+Categories helper
+----------------------
+
+For getting available categories you can call CategoryHelper
+```
+
+$categories = new \Mk\Feed\Generators\Zbozi\CategoriesHelper(); #first parameter can be cache storage for caching results
+
+dump($categories->getCategories());
 ```
 
 Print available config
