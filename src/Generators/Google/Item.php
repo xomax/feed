@@ -78,7 +78,7 @@ class Item extends BaseItem {
     protected $gtin;
     
     /** @var string */
-    protected $npm;
+    protected $mpn;
     
     /** @var string */
     protected $brand;
@@ -279,18 +279,18 @@ class Item extends BaseItem {
     /**
      * @return string
      */
-    public function getNpm()
+    public function getMpn()
     {
-        return $this->npm;
+        return $this->mpn;
     }
 
     /**
-     * @param string $npm
+     * @param string $mpn
      * @return Item
      */
-    public function setNpm($npm)
+    public function setMpn($mpn)
     {
-        $this->npm = $npm;
+        $this->mpn = $mpn;
 
         return $this;
     }
