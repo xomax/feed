@@ -1,0 +1,31 @@
+{contentType xml}
+<entry>
+    <g:id>{$item->itemId}</g:id>
+    <g:title>{$item->title}</g:title>
+    <g:description>{$item->description}</g:description>
+    <g:link>{$item->link}</g:link>
+
+    {if !empty($images = $item->images)}
+        {foreach $images as $image}
+            {var tag = $iterator->first ? 'g:image_link' : 'g:additional_image_link'}
+            <{$tag}>{$image->url}</{$tag}>
+        {/foreach}
+    {/if}
+
+    <g:condition n:if="$item->condition">{$item->condition}</g:condition>
+    <g:availability n:if="$item->availability">{$item->availability}</g:availability>
+    <g:price>{$item->price}</g:price>
+    <g:gtin n:if="$item->gtin">{$item->gtin}</g:gtin>
+    <g:brand n:if="$item->brand">{$item->brand}</g:brand>
+    {*<g:gender>Female</g:gender>
+    <g:age_group>Adult</g:age_group>
+    <g:color>Navy</g:color>
+    <g:size>8 Standard</g:size>*}
+    <g:mpn n:if="$item->mpn">{$item->mpn}</g:mpn>
+
+    {if !empty($productTypes = $item->productTypes)}
+        <g:product_type n:foreach="$productTypes as $productType" n:if="!empty($productType->text)">{$productType->text}</g:product_type>
+    {/if}
+
+    <g:google_product_category n:if="$item->googleProductCategory">{$item->googleProductCategory}</g:google_product_category>
+</entry>

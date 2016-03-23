@@ -16,10 +16,10 @@
 	],
 	"require": {
 		"php": ">=5.4",
-		"nette/di": "~2.3",
-		"nette/utils": "~2.3",
-		"latte/latte": "~2.3",
-		"kdyby/console": "~2.3",
+		"nette/di": "~2.3.0",
+		"nette/utils": "~2.3.0",
+		"latte/latte": "~2.3.0",
+		"kdyby/console": "~2.3.0",
 		"sergiors/importing": "1.0.1"
 	},
 	"require-dev": {
