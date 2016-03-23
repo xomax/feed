@@ -57,7 +57,7 @@ class Item extends BaseItem {
     protected $images = [];
 
     /** @var string|null */
-    protected $condition;
+    protected $condition = self::CONDITION_NEW;
 
     /** @var string @required */
     protected $availability = self::AVAILABILITY_IN_STOCK;
@@ -82,7 +82,7 @@ class Item extends BaseItem {
     
     /** @var string */
     protected $brand;
-    
+
     /** @var bool */
     protected $identifierExists;
 
