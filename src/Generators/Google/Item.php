@@ -20,17 +20,17 @@ class Item extends BaseItem {
         AVAILABILITY_IN_STOCK = 'in stock',
         AVAILABILITY_OUT_OF_STOCK = 'out of stock';
 
-    static $conditions = [
+    static $conditions = array(
         self::CONDITION_NEW,
         self::CONDITION_REFURBISHED,
         self::CONDITION_USED,
-    ];
+    );
 
-    static $availabilities = [
+    static $availabilities = array(
         self::AVAILABILITY_PREORDER,
         self::AVAILABILITY_IN_STOCK,
         self::AVAILABILITY_OUT_OF_STOCK,
-    ];
+    );
 
     /** @var string @required */
     protected $id;
@@ -45,7 +45,7 @@ class Item extends BaseItem {
     protected $googleProductCategory;
 
     /** @var ProductType[] */
-    protected $productTypes = [];
+    protected $productTypes = array();
 
     /**  @var string @required */
     protected $link;
@@ -54,7 +54,7 @@ class Item extends BaseItem {
     protected $mobileLink;
 
     /** @var Image[] */
-    protected $images = [];
+    protected $images = array();
 
     /** @var string|null */
     protected $condition = self::CONDITION_NEW;
@@ -338,7 +338,7 @@ class Item extends BaseItem {
      */
     public function getAvailabilityDate()
     {
-        return $this->availabilityDate instanceof \DateTime ? $this->availabilityDate->format('c') : $this->availabilityDate;;
+        return $this->availabilityDate instanceof \DateTime ? $this->availabilityDate->format('c') : $this->availabilityDate;
     }
 
     /**

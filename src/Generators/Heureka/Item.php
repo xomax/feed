@@ -29,7 +29,7 @@ class Item extends BaseItem {
     protected $url;
 
     /** @var Image[] */
-    protected $images = [];
+    protected $images = array();
 
     /** @var string|null */
     protected $videoUrl;
@@ -41,7 +41,7 @@ class Item extends BaseItem {
     protected $itemType;
 
     /** @var Parameter[] */
-    protected $parameters = [];
+    protected $parameters = array();
 
     /** @var string|null */
     protected $manufacturer;
@@ -62,19 +62,19 @@ class Item extends BaseItem {
     protected $deliveryDate;
 
     /** @var Delivery[] */
-    protected $deliveries = [];
+    protected $deliveries = array();
 
     /** @var string|null */
     protected $itemGroupId;
 
     /** @var array */
-    protected $accessories = [];
+    protected $accessories = array();
 
     /** @var float */
     protected $dues = 0;
 
     /** @var Gift[] */
-    protected $gifts = [];
+    protected $gifts = array();
 
     /**
      * @return float

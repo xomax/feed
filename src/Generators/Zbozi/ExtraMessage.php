@@ -20,7 +20,7 @@ class ExtraMessage extends Nette\Object {
         FREE_STORE_PICKUP = 'free_store_pickup',
         VOUCHER = 'voucher';
 
-    static $types = [
+    static $types = array(
         self::EXTENDED_WARRANTY,
         self::FREE_ACCESSORIES,
         self::FREE_CASE,
@@ -29,7 +29,7 @@ class ExtraMessage extends Nette\Object {
         self::FREE_INSTALLATION,
         self::FREE_STORE_PICKUP,
         self::VOUCHER,
-    ];
+    );
 
     /** @var string */
     protected $type;

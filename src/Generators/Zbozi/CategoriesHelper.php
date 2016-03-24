@@ -4,6 +4,7 @@ namespace Mk\Feed\Generators\Zbozi;
 
 
 use Nette\Caching\Cache;
+use Nette\Caching\IStorage;
 use Sergiors\Importing\Loader\Excel5FileLoader;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
@@ -16,7 +17,7 @@ class CategoriesHelper {
     /** @var \Nette\Caching\Cache */
     private $cache;
 
-    function __construct(\Nette\Caching\IStorage $storage = null)
+    function __construct(IStorage $storage = null)
     {
         if ($storage) {
             $this->cache = new Cache($storage, __CLASS__);
@@ -25,14 +26,14 @@ class CategoriesHelper {
 
     public function getCategories()
     {
-        $categories = [];
+        $categories = array();
         if (!$this->cache || !($categories = $this->cache->load('categories'))) {
             $file = sys_get_temp_dir() . '/file.xls';
             file_put_contents($file, file_get_contents(self::CATEGORY_URL));
 
-            $loaders = [
+            $loaders = array(
                 new Excel5FileLoader(new FileLocator()),
-            ];
+            );
 
             $resolver = new LoaderResolver($loaders);
             $loader = new DelegatingLoader($resolver);

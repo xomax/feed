@@ -1,6 +1,7 @@
 <?php
 namespace Mk\Feed\Generators;
 
+use Latte\Engine;
 use Mk\Feed\Storage;
 use Nette\Object;
 use Mk\Feed\FileEmptyException;
@@ -63,8 +64,8 @@ abstract class BaseGenerator extends Object implements IGenerator {
             throw new ItemIncompletedException('Item is not complete');
         }
 
-        $latte = new \Latte\Engine;
-        $xmlItem = $latte->renderToString($this->getTemplate('item'), ['item' => $item]);
+        $latte = new Engine;
+        $xmlItem = $latte->renderToString($this->getTemplate('item'), array('item' => $item));
         fwrite($this->handle, $xmlItem);
     }
 
@@ -83,7 +84,7 @@ abstract class BaseGenerator extends Object implements IGenerator {
         $this->generate();
 
         if (!$this->prepared) {
-            throw new FileEmptyException('File ' . $this->file . ' has not been opened');
+            throw new FileEmptyException('File has not any items');
         }
 
         $this->prepareTemplate('footer');

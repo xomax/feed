@@ -12,10 +12,10 @@ use Nette;
  */
 class FeedExtension extends Nette\DI\CompilerExtension {
     /** @var array */
-    private $defaults = [
+    private $defaults = array(
         'exportsDir' => '%wwwDir%',
-        'exports'    => []
-    ];
+        'exports'    => array()
+    );
 
     public function loadConfiguration()
     {
@@ -25,7 +25,7 @@ class FeedExtension extends Nette\DI\CompilerExtension {
         $config = $this->getConfig($this->defaults);
 
         $builder->addDefinition($this->prefix('storage'))
-            ->setClass('\Mk\Feed\Storage', [$config['exportsDir']]);
+            ->setClass('\Mk\Feed\Storage', array($config['exportsDir']));
 
         foreach ($config['exports'] as $export => $class) {
             if (!class_exists($class)) {
@@ -37,7 +37,7 @@ class FeedExtension extends Nette\DI\CompilerExtension {
 
         if (class_exists('\Symfony\Component\Console\Command\Command')) {
             $builder->addDefinition($this->prefix('command'))
-                ->setClass('Mk\Feed\Command\FeedCommand', [$config])
+                ->setClass('Mk\Feed\Command\FeedCommand', array($config))
                 ->addTag('kdyby.console.command');
         }
     }

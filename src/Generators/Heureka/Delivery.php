@@ -34,7 +34,7 @@ class Delivery extends Nette\Object {
         UPS = 'UPS',
         VLASTNI_PREPRAVA = 'VLASTNI_PREPRAVA';
 
-    static $ids = [
+    static $ids = array(
         self::CESKA_POSTA,
         self::CESKA_POSTA_NA_POSTU,
         self::CSAD_LOGISTIK_OSTRAVA,
@@ -57,7 +57,7 @@ class Delivery extends Nette\Object {
         self::TOPTRANS,
         self::UPS,
         self::VLASTNI_PREPRAVA,
-    ];
+    );
 
     /** @var string */
     private $id;

@@ -48,7 +48,7 @@ class Item extends BaseItem {
     /** @var int|null */
     protected $categoryId;
     /** @var CategoryText[] */
-    protected $categoryTexts = [];
+    protected $categoryTexts = array();
     /** @var string|null */
     protected $product;
     /** @var string|null */
@@ -68,7 +68,7 @@ class Item extends BaseItem {
     /** @var float|null */
     protected $maxCpcSearch;
     /** @var Parameter[] */
-    protected $parameters = [];
+    protected $parameters = array();
 
     #product database
     /** @var string|null */
