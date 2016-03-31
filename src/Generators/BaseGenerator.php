@@ -51,10 +51,11 @@ abstract class BaseGenerator extends Object implements IGenerator {
 
     /**
      * @param \Mk\Feed\Generators\IItem $item
+     * @param string $templateName
      * @throws \Exception
      * @throws \Throwable
      */
-    public function addItem(IItem $item)
+    protected function addXmlItem(IItem $item, $templateName)
     {
         if (!$this->prepared) {
             $this->prepare();
@@ -65,8 +66,18 @@ abstract class BaseGenerator extends Object implements IGenerator {
         }
 
         $latte = new Engine;
-        $xmlItem = $latte->renderToString($this->getTemplate('item'), array('item' => $item));
+        $xmlItem = $latte->renderToString($this->getTemplate($templateName), array('item' => $item));
         fwrite($this->handle, $xmlItem);
+    }
+
+    /**
+     * @param \Mk\Feed\Generators\IItem $item
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function addItem(IItem $item)
+    {
+        $this->addXmlItem($item, 'item');
     }
 
     /**
@@ -108,6 +119,22 @@ abstract class BaseGenerator extends Object implements IGenerator {
         $footer = fread($footerHandle, filesize($file));
         fclose($footerHandle);
         fwrite($this->handle, $footer);
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isPrepared()
+    {
+        return $this->prepared === true;
+    }
+
+    /**
+     * @return resource|bool|null
+     */
+    protected function getHandle()
+    {
+        return $this->handle;
     }
 
 }

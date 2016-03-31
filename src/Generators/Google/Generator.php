@@ -21,4 +21,14 @@ abstract class Generator extends BaseGenerator {
         return dirname($reflection->getFileName()) . '/latte/' . $name . '.latte';
     }
 
+    /**
+     * @param \Mk\Feed\Generators\Google\Description $description
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function addDescription(Description $description)
+    {
+        $this->addXmlItem($description, 'description');
+    }
+
 }
