@@ -121,20 +121,4 @@ abstract class BaseGenerator extends Object implements IGenerator {
         fwrite($this->handle, $footer);
     }
 
-    /**
-     * @return boolean
-     */
-    public function isPrepared()
-    {
-        return $this->prepared === true;
-    }
-
-    /**
-     * @return resource|bool|null
-     */
-    protected function getHandle()
-    {
-        return $this->handle;
-    }
-
 }
