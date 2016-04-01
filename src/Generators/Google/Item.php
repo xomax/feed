@@ -319,8 +319,13 @@ class Item extends BaseItem {
      */
     public function isIdentifierExists()
     {
-        return $this->identifierExists;
+        return $this->identifierExists !== null ? $this->identifierExists : $this->checkIdentifierExistence();
     }
+
+	public function checkIdentifierExistence ()
+	{
+		return $this->brand !== null && $this->gtin !== null && $this->mpn !== null;
+	}
     
     /**
      * @param boolean $identifierExists
