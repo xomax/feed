@@ -324,7 +324,17 @@ class Item extends BaseItem {
 
 	public function checkIdentifierExistence ()
 	{
-		return $this->brand !== null && $this->gtin !== null && $this->mpn !== null;
+		$identifierCount = 0;
+		if ($this->brand != null) {
+			$identifierCount++;
+		}
+		if ($this->gtin != null) {
+			$identifierCount++;
+		}
+		if ($this->mpn != null) {
+			$identifierCount++;
+		}
+		return $identifierCount > 1;
 	}
     
     /**
