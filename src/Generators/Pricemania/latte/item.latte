@@ -1,0 +1,26 @@
+{contentType xml}
+<SHOPITEM>
+	<NAME>{$item->name}</NAME>
+	<DESCRIPTION>{$item->description}</DESCRIPTION>
+	<PRICE>{$item->price}</PRICE>
+	<CATEGORY>{$item->category}</CATEGORY>
+	<MANUFACTURER>{$item->manufacturer}</MANUFACTURER>
+	<URL>{$item->url}</URL>
+
+	<PICTURE>{$item->picture}</PICTURE>
+	<SHOPPING>{$item->deliveryDate}</SHOPPING>
+	<AVAILABILITY>{$item->availability}</AVAILABILITY>
+
+	<ID n:if="$item->id">{$item->id}</ID>
+	<EAN n:if="$item->ean">{$item->ean}</EAN>
+	<PART_NUMBER n:if="$item->partNumber">{$item->partNumber}</PART_NUMBER>
+
+	{if !empty($parameters = $item->parameters)}
+		<PARAMS>
+			<PARAM n:foreach="$parameters as $parameter">
+				<PARAM_NAME>{$parameter->name}</PARAM_NAME>
+				<VAL>{$parameter->value}</VAL>
+			</PARAM>
+		</PARAMS>
+	{/if}
+</SHOPITEM>
