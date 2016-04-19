@@ -10,10 +10,8 @@ use Mk, Nette;
  * @package Mk\Feed\Generators\Zbozi
  * @see http://napoveda.seznam.cz/cz/zbozi/specifikace-xml-pro-obchody/specifikace-xml-feedu/#PARAM
  */
-class Parameter extends Nette\Object {
+class Parameter extends Mk\Feed\Generators\BaseParameter {
 
-    protected $name;
-    protected $value;
     protected $unit;
 
     /**
@@ -24,25 +22,8 @@ class Parameter extends Nette\Object {
      */
     public function __construct($name, $value, $unit = null)
     {
-        $this->name = (string)$name;
-        $this->value = (string)$value;
+		parent::__construct($name, $value);
         $this->unit = isset($unit) ? (string) $unit : null;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
     }
 
     /**
