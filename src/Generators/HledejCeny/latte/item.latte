@@ -1,0 +1,31 @@
+{contentType xml}
+<SHOPITEM>
+    <PRODUCT>{$item->productName}</PRODUCT>
+    <URL>{$item->url}</URL>
+	<DESCRIPTION>{$item->description}</DESCRIPTION>
+	<PRICE_VAT>{$item->priceVat}</PRICE_VAT>
+	<IMAGE_URL>{$item->imageUrl}</IMAGE_URL>
+    <PRICE_VAT>{$item->priceVat}</PRICE_VAT>
+	<DELIVERY_DATE>{$item->deliveryDate}</DELIVERY_DATE>
+
+	<MANUFACTURER n:if="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
+	<CATEGORYTEXT n:if="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
+	<DELIVERY_COST>{$item->deliveryCost}</DELIVERY_COST>
+
+	<ID n:if="$item->id">{$item->id}</ID>
+	<EAN n:if="$item->ean">{$item->ean}</EAN>
+	<PRODUCT_NO n:if="$item->productNo">{$item->productNo}</PRODUCT_NO>
+
+	<WARRANTY n:if="$item->warranty">{$item->warranty}</WARRANTY>
+	<DUES n:if="$item->dues && $item->dues>0">{$item->dues}</DUES>
+	<TOLL n:if="$item->toll && $item->toll>0">{$item->toll}</TOLL>
+
+	<NOIMPORT n:if="$item->noImport && $item->noImport==1">{$item->noImport}</NOIMPORT>
+
+	{if !empty($parameters = $item->parameters)}
+		<PARAM n:foreach="$parameters as $parameter">
+			<PARAM_NAME>{$parameter->name}</PARAM_NAME>
+			<VAL>{$parameter->value}</VAL>
+		</PARAM>
+	{/if}
+</SHOPITEM>
