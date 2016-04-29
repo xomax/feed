@@ -2,7 +2,7 @@
 <SHOPITEM>
     <ITEM_ID n:ifset="$item->itemId">{$item->itemId}</ITEM_ID>
     <PRODUCTNAME>{$item->productName}</PRODUCTNAME>
-    <PRODUCT>{$item->product}</PRODUCT>
+    <PRODUCT n:if="$item->product">{$item->product}</PRODUCT>
     <DESCRIPTION>{$item->description}</DESCRIPTION>
     <URL>{$item->url}</URL>
 
@@ -23,10 +23,10 @@
         </PARAM>
     {/if}
 
-    <MANUFACTURER n:ifset="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
-    <CATEGORYTEXT n:ifset="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
-    <EAN n:ifset="$item->ean">{$item->ean}</EAN>
-    <ISBN n:ifset="$item->isbn">{$item->isbn}</ISBN>
+    <MANUFACTURER n:if="$item->manufacturer">{$item->manufacturer}</MANUFACTURER>
+    <CATEGORYTEXT n:if="$item->categoryText">{$item->categoryText}</CATEGORYTEXT>
+    <EAN n:if="$item->ean">{$item->ean}</EAN>
+    <ISBN n:if="$item->isbn">{$item->isbn}</ISBN>
     <HEUREKA_CPC n:if="isset($item->heurekaCpc) && $item->heurekaCpc>0">{$item->heurekaCpc}</HEUREKA_CPC>
     <DELIVERY_DATE>{$item->deliveryDate}</DELIVERY_DATE>
 
@@ -38,13 +38,13 @@
         </DELIVERY>
     {/if}
 
-    <ITEMGROUP_ID n:ifset="$item->itemGroupId">{$item->itemGroupId}</ITEMGROUP_ID>
+    <ITEMGROUP_ID n:if="$item->itemGroupId">{$item->itemGroupId}</ITEMGROUP_ID>
 
     {if !empty($accessories = $item->accessories)}
         <ACCESSORY n:foreach="$accessories as $itemId">{$itemId}</ACCESSORY>
     {/if}
 
-    <DUES n:ifset="$item->dues">{$item->dues}</DUES>
+    <DUES n:if="$item->dues">{$item->dues}</DUES>
     {if !empty($gifts = $item->gifts)}
         <GIFT n:foreach="$gifts as $gift">{$gift->name}</GIFT>
     {/if}
